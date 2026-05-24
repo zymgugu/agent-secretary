@@ -1,0 +1,37 @@
+[project]
+name = "aigc-secretary"
+version = "0.1.0"
+description = "Multi-Agent 智能秘书系统 — 基于 LangGraph 的 7 Agent 协作"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langgraph>=0.3.0",
+    "langchain-openai>=0.2.0",
+    "langchain-core>=0.3.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "commitizen>=4.16.2",
+    "cz-conventional-plus>=1.0.3",
+    "pre-commit>=4.6.0",
+    "pytest>=8.0.0",
+]
+
+[project.scripts]
+aigc = "src.aigc.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aigc"]
+
+[tool.uv]
+package = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
